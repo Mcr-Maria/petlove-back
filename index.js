@@ -5,14 +5,17 @@ import usuariosRoutes from "./src/routes/usuariosRoutes.js"
 import produtoRoutes from "./src/routes/produtosRouter.js"
 import missoesRoutes from "./src/routes/missoesRouter.js"
 import { login } from "./src/controllers/usuarioContrller.js";
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './src/docs/swagger_output.json' with { type: 'json' };
+
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.get("/", (req, res) => {
-    res.send("Ola mundo");
+    res.redirect("/docs");
 })
 app.post("/login", async (req, res)=> {
     res.json(await login(req.body))
