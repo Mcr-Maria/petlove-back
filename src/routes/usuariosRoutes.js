@@ -1,5 +1,5 @@
 import express from "express"
-import { buscar, buscarPorId, criar, deletar, editar } from "../controllers/usuarioContrller.js"
+import { buscar, buscarPorId, criar, deletar, editar } from "../controllers/usuarioController.js"
 import multer from "multer"
 import path from "path"
 
