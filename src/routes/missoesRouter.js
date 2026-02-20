@@ -1,5 +1,5 @@
 import express from "express"
-import { buscar, buscarPorId, criar, deletar } from "../controllers/missaoController.js"
+import { buscar, buscarPorId, coletar, criar, deletar } from "../controllers/missaoController.js"
 import multer from "multer"
 import path from "path"
 
@@ -26,6 +26,10 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", upload.single("arquivo"), async (req, res) => {
     res.json(await criar(req, res))
+})
+
+router.put("/coleta", async (req, res) => {
+    res.json(await coletar(req.body))
 })
 
 router.delete("/:id", async (req, res) => {
