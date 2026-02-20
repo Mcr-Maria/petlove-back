@@ -25,6 +25,10 @@ app.use("/concorrentes", concorrenteRoutes)
 app.use("/usuarios", usuariosRoutes)
 app.use("/produtos", produtoRoutes)
 app.use("/missoes",missoesRoutes)
+app.use((req, res, next) => {
+    res.status(404).send("Página não encontrada")  
+    
+})
 
 app.listen(8000, () => {
     console.log("Servidor on: http://localhost:8000");
